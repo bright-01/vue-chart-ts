@@ -12,6 +12,16 @@ import { ChartConfiguration } from "chart.js";
 export default Vue.extend({
   name: "App",
   mounted() {
+    // const cavasElement = document.getElementById(
+    //   "myChart"
+    // ) as HTMLCanvasElement;
+    // const ctx2 = cavasElement.getContext("2d");
+    //
+    // if (!ctx2) {
+    //   return;
+    // }
+    // const chart2 = new Chart(ctx2, {}); // null 일 수도 있어서 에러가 발생
+
     const labels = ["January", "February", "March", "April", "May", "June"];
     const data = {
       labels: labels,
