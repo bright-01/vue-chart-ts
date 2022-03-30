@@ -42,7 +42,7 @@ export default Vue.extend({
     const ctx = (
       document.getElementById("myChart") as HTMLCanvasElement
     ).getContext("2d") as CanvasRenderingContext2D;
-    let myChart = new Chart(ctx, config);
+    let myChart = new this.$_Chart(ctx, config);
   },
 });
 </script>
