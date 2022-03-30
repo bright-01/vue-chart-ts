@@ -1,16 +1,28 @@
 <template>
   <div id="app">
-    <canvas id="myChart"></canvas>
+    <canvas id="myChart" ref="myChart"></canvas>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Chart from "chart.js/auto";
+import Vue, { VueConstructor } from "vue";
+// import Chart from "chart.js/auto";
 import { ChartConfiguration } from "chart.js";
+import { MyVueRefs } from "@/types";
 
-export default Vue.extend({
+// export default (
+//   Vue as VueConstructor<Vue & { $ref: { myChart: HTMLCanvasElement } }>
+// ).extend({
+
+export default (Vue as MyVueRefs<{ myChart: HTMLCanvasElement }>).extend({
   name: "App",
+  methods: {
+    sayHi() {
+      const canvasElement = this.$refs.myChart;
+      console.log(canvasElement);
+    },
+  },
+
   mounted() {
     // const cavasElement = document.getElementById(
     //   "myChart"
@@ -39,10 +51,13 @@ export default Vue.extend({
       data,
       options: {},
     };
-    const ctx = (
-      document.getElementById("myChart") as HTMLCanvasElement
-    ).getContext("2d") as CanvasRenderingContext2D;
-    let myChart = new this.$_Chart(ctx, config);
+    // const ctx = (
+    //   document.getElementById("myChart") as HTMLCanvasElement
+    // ).getContext("2d") as CanvasRenderingContext2D;
+
+    const canvasElement = this.$refs.myChart;
+    const ctx = canvasElement.getContext("2d");
+    let myChart = new this.$_Chart(10, config);
   },
 });
 </script>
